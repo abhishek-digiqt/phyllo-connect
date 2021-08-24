@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <title>Phyllo Demo SDK</title>
+    <script type="text/javascript" src="./dist/main.js"></script>
+  </head>
+  <body>
+    <p>ABCD .COM</p>
+    <script type="text/javascript">
+      const connectoToPlatform = async (uuid = null) => {
+        const sdkInstance = await window.PhylloSDK.getSDKInstance(
+          "Sample App",
+          "sandbox"
+        );
+        return sdkInstance.clientConnect(uuid);
+      };
+    </script>
+    <button onclick="connectoToPlatform()">Connnect to Platforms</button>
+    <button
+      onclick="connectoToPlatform('9bb8913b-ddd9-430b-a66a-d74d846e6c66')"
+    >
+      Connnect to Instagram
+    </button>
+    <button
+      onclick="connectoToPlatform('14d9ddf5-51c6-415e-bde6-f8ed36ad7054')"
+    >
+      Connnect to YouTube
+    </button>
+  </body>
+</html>
