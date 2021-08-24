@@ -48,15 +48,29 @@ export class PhylloSDK {
   }
 }
 
-export const getSDKInstance = async (appName, enviroment) => {
+export const getSDKInstance = async (
+  appName,
+  enviroment,
+  isExistingUser = false
+) => {
   let phylloDemoAPIInstance = new PhylloSDK();
-  let userInstance = await phylloDemoAPIInstance.createUser();
-  const userId = userInstance.id;
+  var userID = "";
 
-  // let userId = "a0412c15-1fd5-4b0b-bac0-c67a6f1b60cf";
+  //check if existing user or not
+  if (isExistingUser) {
+    userID = localStorage.getItem("phyllo_userid");
+  } else if (
+    (isExistingUser && !localStorage.getItem("phyllo_userid")) ||
+    !isExistingUser
+  ) {
+    // If existing user and no localstorage key found or if is not existing user
+    let userInstance = await phylloDemoAPIInstance.createUser();
+    userID = userInstance.id;
+    localStorage.setItem("phyllo_userid", userID);
+  }
   // Generate token.
   let tokenInstance = await phylloDemoAPIInstance.createUserToken(
-    userId,
+    userID,
     CLIENT_REDIRECT_URL
   );
   let token = tokenInstance.sdk_token;
@@ -69,7 +83,7 @@ export const getSDKInstance = async (appName, enviroment) => {
 
   // Create the instance of the phyllo sdk.
   var phylloInstance = new Phyllo({
-    userID: userId,
+    userID: userID,
     token: token,
     authEvents: {},
     env: enviroment,
