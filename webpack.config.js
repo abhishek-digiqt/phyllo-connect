@@ -1,11 +1,11 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./sdk/phylloSDK.js",
+  entry: "./sdk/phylloConnectSDK.js",
   output: {
-    filename: "main.js",
+    filename: "phylloConnectSDK.js",
     path: path.resolve(__dirname, "dist"),
-    library: "PhylloSDK",
+    library: "PhylloConnectSDK",
     libraryTarget: "umd",
   },
 };
