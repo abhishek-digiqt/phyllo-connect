@@ -1,8 +1,8 @@
 // INPUTS: Env, Used Id, Token, Developer Name, Redirect URL
 
 const PHYLLO_CONNECT_URL = {
-  sandbox: "http://localhost:3000/",
-  production: "http://localhost:3000/",
+  sandbox: "http://34.70.4.134:8050/",
+  production: "http://34.70.4.134:8050/",
 };
 
 const validateParams = (params) => {
@@ -39,7 +39,7 @@ const clientConnect = async (
       workPlatformIdQueryParam = "";
     }
     var phylloConnectURL = `${PHYLLO_CONNECT_URL[env]}?userId=${userId}&appName=${appName}&workPlatformId=${workPlatformId}&redirectURL=${window.location.href}&token=${token}&env=${env}`;
-    return phylloConnectURL
+    return phylloConnectURL;
   } catch (err) {
     console.error(err);
   }
