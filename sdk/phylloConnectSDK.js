@@ -1,8 +1,8 @@
 // INPUTS: Env, Used Id, Token, Developer Name, Redirect URL
 
 const PHYLLO_CONNECT_URL = {
-  sandbox: "http://34.70.4.134:8050/",
-  production: "http://34.70.4.134:8050/",
+  sandbox: "http://localhost:3000/",
+  production: "http://localhost:3000/",
 };
 
 const validateParams = (params) => {
